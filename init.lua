@@ -20,11 +20,11 @@ redshift.timer    = timer({ timeout = 60 })
 -- functions
 function redshift.dim()
     if redshift.method == "randr" then
-        awful.util.spawn(redshift.redshift .. " -m randr -o " .. redshift.options)
+        awful.spawn.single_instance(redshift.redshift .. " -m randr -o " .. redshift.options)
     elseif redshift.method == "vidmode" then
         local screens = screen.count()
         for i = 0, screens - 1 do
-            awful.util.spawn(redshift.redshift .. " -m vidmode:screen=" .. i ..
+            awful.spawn.single_instance(redshift.redshift .. " -m vidmode:screen=" .. i ..
                              " -o " .. redshift.options)
         end
     end
@@ -35,11 +35,11 @@ end
 redshift.timer:connect_signal("timeout", redshift.dim)
 function redshift.undim()
     if redshift.method == "randr" then
-        awful.util.spawn(redshift.redshift .. " -m randr -x " .. redshift.options)
+        awful.spawn.single_instance(redshift.redshift .. " -m randr -x " .. redshift.options)
     elseif redshift.method == "vidmode" then
         local screens = screen.count()
         for i = 0, screens - 1 do
-            awful.util.spawn(redshift.redshift .. " -m vidmode:screen=" .. i ..
+            awful.spawn.single_instance(redshift.redshift .. " -m vidmode:screen=" .. i ..
                              " -x " .. redshift.options)
         end
     end

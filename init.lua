@@ -7,6 +7,8 @@
 -- standard libraries
 local awful = require("awful")
 
+local naughty = require("naughty")
+
 -- variables
 local redshift = {}
 redshift.redshift = "/usr/bin/redshift"    -- binary path
@@ -48,8 +50,10 @@ end
 function redshift.toggle()
     if redshift.state == 1 then
         redshift.undim()
+        naughty.notify({ text = "redshift pause" })
     else
         redshift.dim()
+        naughty.notify({ text = "redshift resume" })
     end
 end
 

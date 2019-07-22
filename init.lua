@@ -15,7 +15,7 @@ redshift.redshift = "/usr/bin/redshift"    -- binary path
 redshift.method   = "randr"                -- randr or vidmode
 redshift.options  = ""                     -- additional redshift command options
 redshift.state    = 1                      -- 1 for screen dimming, 0 for none
-redshift.timer    = timer({ timeout = 60 })
+redshift.timer    = gears.timer({ timeout = 60 })
 
 -- functions
 function redshift.dim()
